@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  nginx1:
+    build: ./nginx
+    ports:
+      - "8081:80"
+    networks:
+      - nginx-chain
+
+  nginx2:
+    build: ./nginx
+    ports:
+      - "8082:80"
+    networks:
+      - nginx-chain
+
+  nginx3:
+    build: ./nginx
+    ports:
+      - "8083:80"
+    networks:
+      - nginx-chain
+
+  app:
+    build: ./app
+    ports:
+      - "8000:8000"
+    networks:
+      - nginx-chain
+
+networks:
+  nginx-chain:
+    driver: bridge
